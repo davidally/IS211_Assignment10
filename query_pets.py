@@ -36,20 +36,19 @@ def main():
 
                     # Raise exception if there is no match.
                     requested_data = cursor.fetchall()
-                    print '''\n{} {} is {} years old.\nPets that belong to this person:
+                    print '''\n{} {} is {} years old.\n\nPETS:
                     '''.format(
                         requested_data[0][0],
                         requested_data[0][1],
                         requested_data[0][2]
                     )
-
                     for row in requested_data:
                         if row[6] == 1:
                             print '{} was a {} who died at the age of {}.'.format(
                                 row[3], row[4], row[5])
                         elif row[6] == 0:
-                            print '{}, a {} that is {} years old.'.format(
-                                row[3], row[4], row[5])
+                            print '{} is a {} year old {}.'.format(
+                                row[3], row[5], row[4])
 
             except Exception:
                 print 'ERROR: Enter a valid ID.'
