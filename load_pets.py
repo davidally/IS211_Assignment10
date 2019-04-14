@@ -74,6 +74,7 @@ def main():
         # Save and exit
         db.commit()
         db.close()
+
     except Exception:
         print 'Something went wrong...'
 
