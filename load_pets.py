@@ -51,3 +51,5 @@ except lite.Error, e:
 finally:
     if con:
         con.close()
+
+# Delete this
