@@ -38,7 +38,7 @@ def main():
         db = lite.connect('pets.db')
         cursor = db.cursor()
 
-        # Ensures a fresh set of data is created during each run
+        # Reset database state on each run
         cursor.execute('DROP TABLE IF EXISTS person')
         cursor.execute('DROP TABLE IF EXISTS pet')
         cursor.execute('DROP TABLE IF EXISTS person_pet')
