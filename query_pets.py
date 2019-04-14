@@ -48,10 +48,10 @@ def main():
 
                         for row in requested_data:
                             if row[6] == 1:
-                                print '{0}, a {1} who was {2} (Deceased)'.format(
+                                print '{} was a {} who died at the age of {}.'.format(
                                     row[3], row[4], row[5])
                             elif row[6] == 0:
-                                print '{0}, a {1} who is {2}'.format(
+                                print '{}, a {} that is {} years old.'.format(
                                     row[3], row[4], row[5])
 
             except Exception:
