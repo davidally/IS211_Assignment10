@@ -29,27 +29,3 @@ person_pet = (
     (3, 5),
     (4, 6)
 )
-
-try:
-    con = lite.connect('pets.db')
-    cursor = con.cursor()
-
-    cursor.executemany("INSERT INTO person(id, first_name, last_name, age) "
-                       "VALUES(?, ?, ?, ?)", person)
-    cursor.executemany("INSERT INTO pet(id, name, breed, age, dead) "
-                       "VALUES(?, ?, ?, ?, ?)", pet)
-    cursor.executemany("INSERT INTO person_pet(person_id, pet_id) "
-                       "VALUES(?, ?)", person_pet)
-    con.commit()
-
-except lite.Error, e:
-    if con:
-        con.rollback()
-    print "ERROR: {}".format(e.args[0])
-    sys.exit(1)
-
-finally:
-    if con:
-        con.close()
-
-# Delete this
