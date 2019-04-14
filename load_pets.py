@@ -75,7 +75,7 @@ def main():
         cursor.executemany("INSERT INTO pet VALUES(?, ?, ?, ?, ?)", pet)
         cursor.executemany("INSERT INTO person_pet VALUES(?, ?)", person_pet)
 
-        # Save and exit
+        # Close database
         db.commit()
         db.close()
 
