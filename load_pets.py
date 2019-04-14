@@ -3,7 +3,6 @@
 
 
 import sqlite3 as lite
-import sys
 
 person = (
     (1, 'James', 'Smith', 41),
@@ -29,3 +28,55 @@ person_pet = (
     (3, 5),
     (4, 6)
 )
+
+
+def main():
+    """
+    Main function to load pet database
+    """
+    try:
+        db = lite.connect('pets.db')
+        cursor = db.cursor()
+
+        # Ensures a fresh set of data is created during each run
+        cursor.execute('DROP TABLE IF EXISTS person')
+        cursor.execute('DROP TABLE IF EXISTS pet')
+        cursor.execute('DROP TABLE IF EXISTS person_pet')
+
+        # Creating database tables
+        cursor.execute(
+            '''CREATE TABLE person(
+                id INTEGER PRIMARY KEY,
+                first_name TEXT,
+                last_name TEXT,
+                age INTEGER)'''
+        )
+
+        cursor.execute(
+            '''CREATE TABLE pet(
+                id INTEGER PRIMARY KEY,
+                name TEXT, breed TEXT,
+                age INTEGER,
+                dead INTEGER)'''
+        )
+
+        cursor.execute(
+            '''CREATE TABLE person_pet(
+                person_id INTEGER,
+                pet_id INTEGER)'''
+        )
+
+        # Inserting data into tables
+        cursor.executemany("INSERT INTO person VALUES(?, ?, ?, ?)", person)
+        cursor.executemany("INSERT INTO pet VALUES(?, ?, ?, ?, ?)", pet)
+        cursor.executemany("INSERT INTO person_pet VALUES(?, ?)", person_pet)
+
+        # Save and exit
+        db.commit()
+        db.close()
+    except Exception:
+        print 'Something went wrong...'
+
+
+if __name__ == '__main__':
+    main()
