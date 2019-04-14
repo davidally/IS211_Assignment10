@@ -31,9 +31,6 @@ person_pet = (
 
 
 def main():
-    """
-    Main function to load pet database
-    """
     try:
         db = lite.connect('pets.db')
         cursor = db.cursor()
@@ -49,7 +46,8 @@ def main():
                 id INTEGER PRIMARY KEY,
                 first_name TEXT,
                 last_name TEXT,
-                age INTEGER)'''
+                age INTEGER
+                )'''
         )
 
         cursor.execute(
@@ -57,13 +55,15 @@ def main():
                 id INTEGER PRIMARY KEY,
                 name TEXT, breed TEXT,
                 age INTEGER,
-                dead INTEGER)'''
+                dead INTEGER
+                )'''
         )
 
         cursor.execute(
             '''CREATE TABLE person_pet(
                 person_id INTEGER,
-                pet_id INTEGER)'''
+                pet_id INTEGER
+                )'''
         )
 
         # Inserting data into tables
