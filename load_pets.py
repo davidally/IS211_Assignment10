@@ -76,7 +76,7 @@ def main():
         db.close()
 
     except Exception:
-        print 'Something went wrong...'
+        print 'ERROR: Your database could not be initiated.'
 
 
 if __name__ == '__main__':
