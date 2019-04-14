@@ -1,3 +1,5 @@
+-- Create music tables
+
 CREATE TABLE artist (
 artist_name TEXT PRIMARY KEY
 )
