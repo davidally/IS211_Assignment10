@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
 
@@ -31,6 +31,10 @@ person_pet = (
 
 
 def main():
+    """Creates a database and checks if certain data is already present.
+    If so, it will reset the database and re-insert the data. 
+    """
+
     try:
         db = lite.connect('pets.db')
         cursor = db.cursor()
